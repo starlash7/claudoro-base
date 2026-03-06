@@ -39,6 +39,8 @@ const byComma = (value: string): string[] => {
     .filter(Boolean)
 }
 
+const clean = (value: string): string => value.trim()
+
 export const getMiniappManifest = (): MiniappManifest => {
   const name = process.env.NEXT_PUBLIC_MINIAPP_NAME || 'Claudoro'
   const subtitle = process.env.NEXT_PUBLIC_MINIAPP_SUBTITLE || 'Vibe coding focus timer'
@@ -59,9 +61,9 @@ export const getMiniappManifest = (): MiniappManifest => {
 
   return {
     accountAssociation: {
-      header: process.env.MINIAPP_ACCOUNT_ASSOCIATION_HEADER || 'REPLACE_WITH_HEADER',
-      payload: process.env.MINIAPP_ACCOUNT_ASSOCIATION_PAYLOAD || 'REPLACE_WITH_PAYLOAD',
-      signature: process.env.MINIAPP_ACCOUNT_ASSOCIATION_SIGNATURE || 'REPLACE_WITH_SIGNATURE'
+      header: clean(process.env.MINIAPP_ACCOUNT_ASSOCIATION_HEADER || 'REPLACE_WITH_HEADER'),
+      payload: clean(process.env.MINIAPP_ACCOUNT_ASSOCIATION_PAYLOAD || 'REPLACE_WITH_PAYLOAD'),
+      signature: clean(process.env.MINIAPP_ACCOUNT_ASSOCIATION_SIGNATURE || 'REPLACE_WITH_SIGNATURE')
     },
     miniapp: {
       version: '1',
