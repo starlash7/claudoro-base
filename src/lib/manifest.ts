@@ -1,4 +1,4 @@
-import { APP_HOME_URL, APP_ORIGIN } from '@/lib/miniapp'
+import { APP_HOME_URL, APP_ORIGIN, withAssetVersion } from '@/lib/miniapp'
 
 export interface MiniappManifest {
   accountAssociation: {
@@ -40,6 +40,7 @@ const byComma = (value: string): string[] => {
 }
 
 const clean = (value: string): string => value.trim()
+const withVersion = (value: string): string => withAssetVersion(clean(value))
 
 export const getMiniappManifest = (): MiniappManifest => {
   const name = process.env.NEXT_PUBLIC_MINIAPP_NAME || 'Claudoro'
@@ -57,7 +58,7 @@ export const getMiniappManifest = (): MiniappManifest => {
   const screenshots = byComma(
     process.env.NEXT_PUBLIC_MINIAPP_SCREENSHOTS ||
       `${APP_ORIGIN}/screenshot-1.png,${APP_ORIGIN}/screenshot-2.png,${APP_ORIGIN}/screenshot-3.png`
-  )
+  ).map(withVersion)
 
   return {
     accountAssociation: {
@@ -69,21 +70,21 @@ export const getMiniappManifest = (): MiniappManifest => {
       version: '1',
       name,
       homeUrl: APP_HOME_URL,
-      iconUrl: `${APP_ORIGIN}/icon.png`,
-      imageUrl: `${APP_ORIGIN}/og.png`,
+      iconUrl: withVersion(`${APP_ORIGIN}/icon.png`),
+      imageUrl: withVersion(`${APP_ORIGIN}/og.png`),
       buttonTitle: process.env.NEXT_PUBLIC_MINIAPP_BUTTON_TITLE || 'Start Focus',
-      splashImageUrl: `${APP_ORIGIN}/splash.png`,
+      splashImageUrl: withVersion(`${APP_ORIGIN}/splash.png`),
       splashBackgroundColor: process.env.NEXT_PUBLIC_MINIAPP_SPLASH_BG || '#0B0F1A',
       subtitle,
       description,
       canonicalDomain: APP_ORIGIN.replace(/^https?:\/\//, ''),
       primaryCategory,
       tags,
-      heroImageUrl: `${APP_ORIGIN}/hero.png`,
+      heroImageUrl: withVersion(`${APP_ORIGIN}/hero.png`),
       tagline,
       ogTitle: name,
       ogDescription: description,
-      ogImageUrl: `${APP_ORIGIN}/og.png`,
+      ogImageUrl: withVersion(`${APP_ORIGIN}/og.png`),
       screenshotUrls: screenshots,
       ...(shouldNoindex ? { noindex: true } : {}),
       requiredChains: ['eip155:8453'],
