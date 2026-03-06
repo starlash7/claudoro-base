@@ -1,6 +1,6 @@
 const FALLBACK_HOME_URL = 'https://claudoro-base.vercel.app/claudoro'
 
-const normalizeUrl = (value: string): string => value.replace(/\/$/, '')
+const normalizeUrl = (value: string): string => value.trim().replace(/\/$/, '')
 
 export const APP_HOME_URL = normalizeUrl(process.env.NEXT_PUBLIC_URL || FALLBACK_HOME_URL)
 export const APP_ORIGIN = new URL(APP_HOME_URL).origin
