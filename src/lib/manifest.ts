@@ -1,4 +1,4 @@
-import { APP_URL } from '@/lib/miniapp'
+import { APP_HOME_URL, APP_ORIGIN } from '@/lib/miniapp'
 
 export interface MiniappManifest {
   accountAssociation: {
@@ -17,6 +17,7 @@ export interface MiniappManifest {
     splashBackgroundColor: string
     subtitle: string
     description: string
+    canonicalDomain: string
     primaryCategory: string
     tags: string[]
     heroImageUrl: string
@@ -26,6 +27,7 @@ export interface MiniappManifest {
     ogImageUrl: string
     screenshotUrls: string[]
     requiredChains: string[]
+    requiredCapabilities: string[]
   }
 }
 
@@ -48,7 +50,7 @@ export const getMiniappManifest = (): MiniappManifest => {
 
   const screenshots = byComma(
     process.env.NEXT_PUBLIC_MINIAPP_SCREENSHOTS ||
-      `${APP_URL}/screenshot-1.png,${APP_URL}/screenshot-2.png,${APP_URL}/screenshot-3.png`
+      `${APP_ORIGIN}/screenshot-1.png,${APP_ORIGIN}/screenshot-2.png,${APP_ORIGIN}/screenshot-3.png`
   )
 
   return {
@@ -60,23 +62,25 @@ export const getMiniappManifest = (): MiniappManifest => {
     miniapp: {
       version: '1',
       name,
-      homeUrl: APP_URL,
-      iconUrl: `${APP_URL}/icon.png`,
-      imageUrl: `${APP_URL}/og.png`,
+      homeUrl: APP_HOME_URL,
+      iconUrl: `${APP_ORIGIN}/icon.png`,
+      imageUrl: `${APP_ORIGIN}/og.png`,
       buttonTitle: process.env.NEXT_PUBLIC_MINIAPP_BUTTON_TITLE || 'Start Focus',
-      splashImageUrl: `${APP_URL}/splash.png`,
+      splashImageUrl: `${APP_ORIGIN}/splash.png`,
       splashBackgroundColor: process.env.NEXT_PUBLIC_MINIAPP_SPLASH_BG || '#0B0F1A',
       subtitle,
       description,
+      canonicalDomain: APP_ORIGIN.replace(/^https?:\/\//, ''),
       primaryCategory,
       tags,
-      heroImageUrl: `${APP_URL}/hero.png`,
+      heroImageUrl: `${APP_ORIGIN}/hero.png`,
       tagline,
       ogTitle: name,
       ogDescription: description,
-      ogImageUrl: `${APP_URL}/og.png`,
+      ogImageUrl: `${APP_ORIGIN}/og.png`,
       screenshotUrls: screenshots,
-      requiredChains: ['eip155:8453']
+      requiredChains: ['eip155:8453'],
+      requiredCapabilities: ['actions.ready']
     }
   }
 }

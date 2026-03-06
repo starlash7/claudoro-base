@@ -16,7 +16,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:3000/claudoro`.
 
 ## Build Checks
 
@@ -30,6 +30,7 @@ npm run build
 
 - Manifest route path: `/.well-known/farcaster.json`
   - implemented at `src/app/.well-known/farcaster.json/route.ts`
+- Miniapp route path: `/claudoro`
 - Copy `.env.example` to `.env.local` and set real values.
 - `accountAssociation` is loaded from env vars:
   - `MINIAPP_ACCOUNT_ASSOCIATION_HEADER`
@@ -40,8 +41,8 @@ npm run build
 
 ## Metadata
 
-- Embed metadata is generated in `src/app/layout.tsx`
-- App URL source is `NEXT_PUBLIC_URL` (fallback: `https://claudoro-base.vercel.app`)
+- Embed metadata is generated in `src/app/claudoro/layout.tsx`
+- App home URL source is `NEXT_PUBLIC_URL` (fallback: `https://claudoro-base.vercel.app/claudoro`)
 
 ## Migration Notes
 
