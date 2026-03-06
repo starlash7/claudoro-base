@@ -75,7 +75,7 @@ Last updated: 2026-03-06
 
 ## 6) Concrete File-Level Integration Targets
 
-- `public/.well-known/farcaster.json` (or framework-equivalent route)
+- `/.well-known/farcaster.json` (implemented via framework route)
 - App bootstrap/root layout: initialize Miniapp SDK and call `ready()` once
 - Launch/share routes: add `fc:miniapp` metadata
 - Env vars for `accountAssociation` and canonical URL

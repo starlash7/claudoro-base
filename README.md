@@ -28,11 +28,13 @@ npm run build
 
 ## Base Miniapp Setup Notes
 
-- Manifest file path: `public/.well-known/farcaster.json`
-- Current `accountAssociation` values are placeholders:
-  - `REPLACE_WITH_HEADER`
-  - `REPLACE_WITH_PAYLOAD`
-  - `REPLACE_WITH_SIGNATURE`
+- Manifest route path: `/.well-known/farcaster.json`
+  - implemented at `src/app/.well-known/farcaster.json/route.ts`
+- Copy `.env.example` to `.env.local` and set real values.
+- `accountAssociation` is loaded from env vars:
+  - `MINIAPP_ACCOUNT_ASSOCIATION_HEADER`
+  - `MINIAPP_ACCOUNT_ASSOCIATION_PAYLOAD`
+  - `MINIAPP_ACCOUNT_ASSOCIATION_SIGNATURE`
 - Chain is fixed to Base in manifest:
   - `requiredChains: ["eip155:8453"]`
 
