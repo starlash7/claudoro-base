@@ -1,4 +1,5 @@
 const FALLBACK_HOME_URL = 'https://claudoro-base.vercel.app/claudoro'
+export const BASE_APP_ID = process.env.NEXT_PUBLIC_BASE_APP_ID || '69aa69133c6755b23e8e40e9'
 
 const normalizeUrl = (value: string): string => value.trim().replace(/\/$/, '')
 

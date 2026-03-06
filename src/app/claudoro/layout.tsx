@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
-import { APP_HOME_URL, APP_ORIGIN, MINIAPP_EMBED } from '@/lib/miniapp'
-
-const BASE_APP_ID = process.env.NEXT_PUBLIC_BASE_APP_ID || '69aa69133c6755b23e8e40e9'
+import { APP_HOME_URL, APP_ORIGIN, BASE_APP_ID, MINIAPP_EMBED } from '@/lib/miniapp'
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_ORIGIN),
