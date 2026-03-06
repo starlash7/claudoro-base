@@ -3,9 +3,9 @@
   <circle cx="172" cy="164" r="178" fill="#f3d3c2" opacity="0.34" />
   <circle cx="852" cy="820" r="244" fill="#efc0a8" opacity="0.2" />
 
-  <rect x="192" y="96" width="160" height="42" rx="21" fill="#fff" stroke="#e0c6b7" stroke-width="4" />
+  <rect x="172" y="96" width="220" height="42" rx="21" fill="#fff" stroke="#e0c6b7" stroke-width="4" />
   <text
-    x="272"
+    x="282"
     y="124"
     fill="#8b6a57"
     font-family="'SF Mono', 'Geist Mono', Menlo, monospace"
