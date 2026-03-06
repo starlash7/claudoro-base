@@ -12,7 +12,7 @@ export const MINIAPP_EMBED = {
   button: {
     title: 'Start Focus',
     action: {
-      type: 'launch_frame',
+      type: 'launch_miniapp',
       name: 'Claudoro',
       url: APP_HOME_URL,
       splashImageUrl: `${APP_ORIGIN}/splash.png`,
