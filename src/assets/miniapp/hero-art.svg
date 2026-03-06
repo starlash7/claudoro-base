@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="hero-bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffaf6" />
+      <stop offset="100%" stop-color="#f5ebdf" />
+    </linearGradient>
+    <linearGradient id="hero-card" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fbf1e9" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#hero-bg)" />
+  <circle cx="112" cy="96" r="188" fill="#f5d6c6" opacity="0.36" />
+  <circle cx="1080" cy="560" r="228" fill="#f0bfa8" opacity="0.22" />
+
+  <g opacity="0.14" stroke="#d97757" stroke-width="1">
+    <path d="M0 104 H1200" />
+    <path d="M0 196 H1200" />
+    <path d="M0 288 H1200" />
+    <path d="M0 380 H1200" />
+    <path d="M0 472 H1200" />
+    <path d="M0 564 H1200" />
+  </g>
+
+  <g transform="translate(72 72)">
+    <rect x="0" y="0" width="168" height="42" rx="21" fill="#fff" stroke="#d7b8a6" />
+    <text
+      x="84"
+      y="28"
+      fill="#8b6a57"
+      font-family="'SF Mono', 'Geist Mono', Menlo, monospace"
+      font-size="20"
+      font-weight="700"
+      letter-spacing="4"
+      text-anchor="middle"
+    >
+      BASE MINIAPP
+    </text>
+
+    <text
+      x="0"
+      y="132"
+      fill="#d97757"
+      font-family="'SF Mono', 'Geist Mono', Menlo, monospace"
+      font-size="26"
+      font-weight="700"
+      letter-spacing="8"
+    >
+      CLAUDORO
+    </text>
+
+    <text
+      x="0"
+      y="228"
+      fill="#33251d"
+      font-family="'SF Mono', 'Geist Mono', Menlo, monospace"
+      font-size="72"
+      font-weight="700"
+      letter-spacing="-2"
+    >
+      Focus in
+    </text>
+    <text
+      x="0"
+      y="304"
+      fill="#33251d"
+      font-family="'SF Mono', 'Geist Mono', Menlo, monospace"
+      font-size="72"
+      font-weight="700"
+      letter-spacing="-2"
+    >
+      clean sprints.
+    </text>
+
+    <text
+      x="0"
+      y="366"
+      fill="#6d5649"
+      font-family="'SF Mono', 'Geist Mono', Menlo, monospace"
+      font-size="28"
+      font-weight="500"
+    >
+      Pomodoro timer, streak tracking, and
+    </text>
+    <text
+      x="0"
+      y="408"
+      fill="#6d5649"
+      font-family="'SF Mono', 'Geist Mono', Menlo, monospace"
+      font-size="28"
+      font-weight="500"
+    >
+      Base-native share and save loops.
+    </text>
+
+    <g transform="translate(0 452)">
+      <rect x="0" y="0" width="134" height="42" rx="21" fill="#fff" stroke="#d7b8a6" />
+      <text x="67" y="27" fill="#8b6a57" font-family="'SF Mono', 'Geist Mono', Menlo, monospace" font-size="18" font-weight="700" text-anchor="middle">POMODORO</text>
+      <rect x="150" y="0" width="110" height="42" rx="21" fill="#fff" stroke="#d7b8a6" />
+      <text x="205" y="27" fill="#8b6a57" font-family="'SF Mono', 'Geist Mono', Menlo, monospace" font-size="18" font-weight="700" text-anchor="middle">BASE</text>
+      <rect x="276" y="0" width="144" height="42" rx="21" fill="#fff" stroke="#d7b8a6" />
+      <text x="348" y="27" fill="#8b6a57" font-family="'SF Mono', 'Geist Mono', Menlo, monospace" font-size="18" font-weight="700" text-anchor="middle">STREAKS</text>
+    </g>
+  </g>
+
+  <g transform="translate(708 84) rotate(-4 210 210)">
+    <rect x="0" y="0" width="402" height="462" rx="36" fill="url(#hero-card)" stroke="#e0c6b7" stroke-width="3" />
+    <rect x="24" y="24" width="354" height="56" rx="22" fill="#fff8f2" stroke="#ecd3c5" />
+    <rect x="42" y="40" width="88" height="24" rx="12" fill="#f2ddcf" />
+    <text x="201" y="58" fill="#d97757" font-family="'SF Mono', 'Geist Mono', Menlo, monospace" font-size="24" font-weight="700" text-anchor="middle">CLAUDORO</text>
+
+    <rect x="36" y="108" width="330" height="96" rx="28" fill="#fff" stroke="#ead5c8" />
+    <text x="60" y="142" fill="#8b6a57" font-family="'SF Mono', 'Geist Mono', Menlo, monospace" font-size="18" font-weight="700" letter-spacing="4">TODAY'S GOAL</text>
+    <text x="60" y="178" fill="#33251d" font-family="'SF Mono', 'Geist Mono', Menlo, monospace" font-size="34" font-weight="700">Ship focused work</text>
+
+    <rect x="36" y="222" width="330" height="174" rx="32" fill="#fff" stroke="#ead5c8" />
+    <text x="201" y="324" fill="#33251d" font-family="'SF Mono', 'Geist Mono', Menlo, monospace" font-size="86" font-weight="700" text-anchor="middle">25:00</text>
+    <g transform="translate(76 352)">
+      <rect x="0" y="0" width="56" height="12" rx="6" fill="#d97757" />
+      <rect x="68" y="0" width="56" height="12" rx="6" fill="#f2ddcf" />
+      <rect x="136" y="0" width="56" height="12" rx="6" fill="#f2ddcf" />
+      <rect x="204" y="0" width="56" height="12" rx="6" fill="#f2ddcf" />
+    </g>
+
+    <g transform="translate(138 412)">
+      <rect x="0" y="0" width="126" height="42" rx="21" fill="#d97757" />
+      <text x="63" y="27" fill="#fff" font-family="'SF Mono', 'Geist Mono', Menlo, monospace" font-size="20" font-weight="700" text-anchor="middle">START</text>
+    </g>
+
+    <g transform="translate(256 146)">
+      <rect x="0" y="18" width="70" height="52" rx="12" fill="#d97757" />
+      <rect x="-16" y="28" width="100" height="18" rx="8" fill="#d97757" />
+      <rect x="16" y="0" width="38" height="4" fill="#a94f32" />
+      <rect x="16" y="72" width="12" height="22" fill="#d97757" />
+      <rect x="58" y="72" width="12" height="22" fill="#d97757" />
+      <rect x="18" y="34" width="14" height="6" fill="#33251d" />
+      <rect x="48" y="34" width="14" height="6" fill="#33251d" />
+      <ellipse cx="36" cy="110" rx="78" ry="18" fill="#d97757" opacity="0.18" />
+    </g>
+  </g>
+</svg>
