@@ -51,6 +51,14 @@ body {
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
+  padding-top: env(safe-area-inset-top, 0);
+  padding-right: env(safe-area-inset-right, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-left: env(safe-area-inset-left, 0);
+}
+
+.app-shell {
+  min-height: 100dvh;
 }
 
 .stat-card {
@@ -185,6 +193,11 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  .app-shell {
+    border: 0;
+    box-shadow: none;
+  }
+
   .terminal-window-btn {
     padding: 0.3rem;
   }

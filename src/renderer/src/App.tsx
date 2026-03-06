@@ -213,6 +213,18 @@ function App(): React.JSX.Element {
           <section className="relative z-10 min-w-0">
             {activeMenu === 'timer' ? (
               <section className="space-y-3">
+                {shouldShowOnboarding ? (
+                  <OnboardingModal
+                    isOpen
+                    onClose={() => {
+                      completeOnboarding()
+                    }}
+                    onOpenSettings={() => {
+                      setActiveMenu('settings')
+                    }}
+                  />
+                ) : null}
+
                 <GoalInput />
                 <ModeSelector />
 
@@ -244,24 +256,13 @@ function App(): React.JSX.Element {
         </div>
       </main>
 
-      <footer className="shrink-0 border-t border-[var(--terminal-border-soft)] px-4 py-2">
+      <footer className="hidden shrink-0 border-t border-[var(--terminal-border-soft)] px-4 py-2 sm:block">
         <p className="terminal-footer-note text-right">Powered by pixy7</p>
       </footer>
 
       <Mascot />
 
       <CommitMessageModal />
-      {shouldShowOnboarding ? (
-        <OnboardingModal
-          isOpen
-          onClose={() => {
-            completeOnboarding()
-          }}
-          onOpenSettings={() => {
-            setActiveMenu('settings')
-          }}
-        />
-      ) : null}
     </div>
   )
 }
