@@ -10,22 +10,19 @@ export const ASSET_VERSION = normalizeUrl(
   process.env.NEXT_PUBLIC_ASSET_VERSION || process.env.VERCEL_GIT_COMMIT_SHA || 'dev'
 )
 
-export const withAssetVersion = (url: string): string => {
-  const resolvedUrl = new URL(url, APP_ORIGIN)
-  resolvedUrl.searchParams.set('v', ASSET_VERSION)
-  return resolvedUrl.toString()
-}
+export const assetUrl = (filename: string): string =>
+  `${APP_ORIGIN}/miniapp-assets/${encodeURIComponent(ASSET_VERSION)}/${encodeURIComponent(filename)}`
 
 export const MINIAPP_EMBED = {
   version: 'next',
-  imageUrl: withAssetVersion(`${APP_ORIGIN}/og.png`),
+  imageUrl: assetUrl('og.png'),
   button: {
     title: 'Start Focus',
     action: {
       type: 'launch_miniapp',
       name: 'Claudoro',
       url: APP_HOME_URL,
-      splashImageUrl: withAssetVersion(`${APP_ORIGIN}/splash.png`),
+      splashImageUrl: assetUrl('splash.png'),
       splashBackgroundColor: '#0B0F1A'
     }
   }

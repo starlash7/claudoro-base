@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { APP_HOME_URL, APP_ORIGIN, BASE_APP_ID, MINIAPP_EMBED, withAssetVersion } from '@/lib/miniapp'
+import { APP_HOME_URL, APP_ORIGIN, BASE_APP_ID, MINIAPP_EMBED, assetUrl } from '@/lib/miniapp'
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_ORIGIN),
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Claudoro',
     description: 'Vibe coding timer miniapp on Base.',
     url: APP_HOME_URL,
-    images: [withAssetVersion(`${APP_ORIGIN}/og.png`)]
+    images: [assetUrl('og.png')]
   },
   other: {
     'base:app_id': BASE_APP_ID,

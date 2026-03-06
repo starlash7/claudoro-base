@@ -1,4 +1,4 @@
-import { APP_HOME_URL, APP_ORIGIN, withAssetVersion } from '@/lib/miniapp'
+import { APP_HOME_URL, APP_ORIGIN, assetUrl } from '@/lib/miniapp'
 
 export interface MiniappManifest {
   accountAssociation: {
@@ -40,7 +40,16 @@ const byComma = (value: string): string[] => {
 }
 
 const clean = (value: string): string => value.trim()
-const withVersion = (value: string): string => withAssetVersion(clean(value))
+const withVersion = (value: string): string => {
+  const cleaned = clean(value)
+  const filename = cleaned.split('/').pop()
+
+  if (!filename) {
+    return cleaned
+  }
+
+  return assetUrl(filename)
+}
 
 export const getMiniappManifest = (): MiniappManifest => {
   const name = process.env.NEXT_PUBLIC_MINIAPP_NAME || 'Claudoro'
