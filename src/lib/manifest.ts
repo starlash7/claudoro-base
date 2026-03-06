@@ -26,6 +26,7 @@ export interface MiniappManifest {
     ogDescription: string
     ogImageUrl: string
     screenshotUrls: string[]
+    noindex?: boolean
     requiredChains: string[]
     requiredCapabilities: string[]
   }
@@ -47,6 +48,9 @@ export const getMiniappManifest = (): MiniappManifest => {
   const tagline = process.env.NEXT_PUBLIC_MINIAPP_TAGLINE || 'Ship in focused sprints'
   const primaryCategory = process.env.NEXT_PUBLIC_MINIAPP_CATEGORY || 'productivity'
   const tags = byComma(process.env.NEXT_PUBLIC_MINIAPP_TAGS || 'focus,timer,pomodoro')
+  const noindexEnv = process.env.MINIAPP_NOINDEX
+  const shouldNoindex =
+    noindexEnv !== undefined ? noindexEnv === 'true' : process.env.VERCEL_ENV !== 'production'
 
   const screenshots = byComma(
     process.env.NEXT_PUBLIC_MINIAPP_SCREENSHOTS ||
@@ -79,6 +83,7 @@ export const getMiniappManifest = (): MiniappManifest => {
       ogDescription: description,
       ogImageUrl: `${APP_ORIGIN}/og.png`,
       screenshotUrls: screenshots,
+      ...(shouldNoindex ? { noindex: true } : {}),
       requiredChains: ['eip155:8453'],
       requiredCapabilities: ['actions.ready']
     }

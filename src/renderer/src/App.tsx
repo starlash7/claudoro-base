@@ -9,8 +9,12 @@ import Stats from './components/Stats/Stats'
 import CommitMessageModal from './components/GitHub/CommitMessageModal'
 import GitHubWidget from './components/GitHub/GitHubWidget'
 import MediaLauncher from './components/Media/MediaLauncher'
+import MiniAppCompletionCard from './components/MiniApp/MiniAppCompletionCard'
+import MiniAppProfileCard from './components/MiniApp/MiniAppProfileCard'
 import OnboardingModal from './components/Onboarding/OnboardingModal'
 import { useAppLogging } from './hooks/useAppLogging'
+import { useMiniAppRuntime } from './hooks/useMiniAppRuntime'
+import { useStats } from './hooks/useStats'
 import { useTimer } from './hooks/useTimer'
 import { useTrayIntegration } from './hooks/useTrayIntegration'
 import { useAppStore, useShouldShowOnboarding } from './store/appStore'
@@ -37,11 +41,15 @@ function App(): React.JSX.Element {
   const clearRecoveryNotice = useTimerStore((state) => state.clearRecoveryNotice)
   const shouldShowOnboarding = useShouldShowOnboarding()
   const completeOnboarding = useAppStore((state) => state.completeOnboarding)
+  const goal = useTimerStore((state) => state.goal)
+  const mascotState = useTimerStore((state) => state.mascotState)
   const githubToken = useSettingsStore((state) => state.githubToken)
   const githubMode = useSettingsStore((state) => state.githubMode)
   const githubUsername = useSettingsStore((state) => state.githubUsername)
   const githubRepo = useSettingsStore((state) => state.githubRepo)
   const updateGitHubSettings = useSettingsStore((state) => state.updateGitHubSettings)
+  const { todayCompletedSessions, todayFocusMinutes } = useStats()
+  const miniAppRuntime = useMiniAppRuntime()
 
   useEffect(() => {
     if (!recoveryNoticeSeconds) {
@@ -172,6 +180,11 @@ function App(): React.JSX.Element {
   const recoveredMinutes = recoveryNoticeSeconds
     ? Math.max(1, Math.round(recoveryNoticeSeconds / 60))
     : 0
+  const shouldShowCompletionActions =
+    activeMenu === 'timer' &&
+    miniAppRuntime.isMiniApp &&
+    todayCompletedSessions > 0 &&
+    mascotState === 'complete'
 
   return (
     <div className="app-shell relative flex h-screen flex-col overflow-hidden border border-[var(--terminal-border)] bg-[var(--terminal-bg)] text-[var(--terminal-text)] shadow-[0_0_0_1px_rgba(217,119,87,0.12),0_16px_48px_var(--terminal-shadow)]">
@@ -213,6 +226,19 @@ function App(): React.JSX.Element {
           <section className="relative z-10 min-w-0">
             {activeMenu === 'timer' ? (
               <section className="space-y-3">
+                {miniAppRuntime.isContextLoaded && miniAppRuntime.context ? (
+                  <MiniAppProfileCard
+                    isAdded={miniAppRuntime.isAdded}
+                    locationLabel={miniAppRuntime.locationLabel}
+                    onOpenProfile={() => {
+                      void miniAppRuntime.openProfile()
+                    }}
+                    userAvatarUrl={miniAppRuntime.userAvatarUrl}
+                    userHandle={miniAppRuntime.userHandle}
+                    userLabel={miniAppRuntime.userLabel}
+                  />
+                ) : null}
+
                 {shouldShowOnboarding ? (
                   <OnboardingModal
                     isOpen
@@ -232,6 +258,23 @@ function App(): React.JSX.Element {
                   <TimerDisplay />
                   <Controls />
                 </section>
+
+                {shouldShowCompletionActions ? (
+                  <MiniAppCompletionCard
+                    completedSessions={todayCompletedSessions}
+                    focusMinutes={todayFocusMinutes}
+                    goal={goal}
+                    isAdded={miniAppRuntime.isAdded}
+                    onSave={() => miniAppRuntime.saveMiniApp()}
+                    onShare={() =>
+                      miniAppRuntime.shareProgress({
+                        goal,
+                        completedSessions: todayCompletedSessions,
+                        focusMinutes: todayFocusMinutes
+                      })
+                    }
+                  />
+                ) : null}
               </section>
             ) : null}
 
